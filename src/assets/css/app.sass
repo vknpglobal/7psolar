@@ -1,0 +1,504 @@
+$black : #000000
+$dark-grey : #1e1e1e
+$medium-grey: #333333
+$medium-light-grey: rgba(255, 255, 255, 0.8)
+$light-grey: #a4a4a4
+$white: #ffffff
+$sky-blue: #6ab4e4
+$yellow: #fcca03
+$grey: rgba(48, 48, 48, 0.8)
+$openSans: 'Open Sans', sans-serif
+$raleWay: 'Raleway', sans-serif;
+
+@mixin transform($property) 
+    -webkit-transform: $property
+    -ms-transform: $property
+    transform: $property
+
+@mixin box-shadow($property) 
+    -webkit-box-shadow: $property
+    -ms-box-shadow: $property
+    box-shadow: $property
+
+@mixin transition($transition)
+    -moz-transition: $transition
+    -o-transition: $transition
+    -webkit-transition: $transition
+    transition: $transition
+
+%heading
+    font-family: $raleWay
+    font-weight: 700
+    text-transform: uppercase
+
+%corner-edges
+    content: ''
+    border-style: solid
+    position: absolute
+
+html
+    font-size: 14px
+
+p, h2, h3, h4, h5
+    margin: 0px
+p
+    color: $light-grey
+
+a, a:hover, a:focus
+    text-decoration: none
+    text-shadow: none
+
+body
+    font-size: 1rem
+    color: $dark-grey
+    line-height: 1.6
+    font-family: $openSans
+
+header 
+    background: $medium-grey
+
+    .top-nav
+        background: $dark-grey
+
+    .show-grid
+        padding-top: 8px
+        padding-bottom: 8px;
+        color: $white
+        font-size: 0.86rem
+        line-height: 1.715rem
+
+    .address
+        color: #a4a4a4
+
+    .main-nav 
+        background: $yellow
+        min-height: 60px
+
+        .navbar-default
+            background: $yellow
+            border-radius: 0
+
+        .navbar-default.fix
+            position: fixed
+            width: 100%
+            left: 0
+            top: 0
+            z-index: 4
+            
+
+        .nav a
+            color: $medium-grey
+            font-weight: 700
+
+        .nav 
+            > li 
+                > a
+                    position: relative
+                    padding: 20px 30px
+                    text-transform: uppercase
+                    background-color: transparent !important
+                    overflow: hidden
+
+                    &::before, &::after
+                        @extend %corner-edges
+                        border-color: $medium-grey
+                        width: 80px
+                        height: 60px
+                        +transition(all 0.2s ease-in-out)
+                        opacity: 0;
+
+                    &::before
+                        border-width: 1px 0 0 1px 
+                        left: 10px
+                        top: 13px
+
+                    &::after
+                        border-width: 0 1px 1px 0
+                        right: 10px
+                        bottom: 13px
+
+                &:hover> a::before, &:hover> a::after, &.active> a::before, &.active> a::after
+                    width: 20px
+                    height: 20px
+                    opacity: 1
+
+                & ul
+                    padding: 10px 0
+                    background-color: $white
+                    box-shadow: none
+                    +transition(all 0.4s ease-in-out)
+                    margin-top: 30px
+                    opacity: 0
+                    display: block
+                    visibility: hidden
+                    border-width: 0 0 3px
+                    border-color: $yellow
+                    min-width: 13rem
+                    border-radius: 0
+
+                    li
+                        a
+                            padding: 15px 25px
+
+                &:hover ul
+                    margin: 0
+                    opacity: 1
+                    visibility: visible
+    .social-links
+        a
+             margin-left: 18px
+
+.social-links
+    a
+        color: $white
+        +transition(all 0.3s ease-in-out)
+
+        &:hover
+            color: $yellow
+
+        svg
+            font-size: 1rem
+
+.carousel-inner
+    background: $medium-grey
+
+    .item
+        img
+            opacity: 0.4
+        .carousel-caption
+            left: 50%
+            top: 50%
+            right: auto
+            bottom: auto
+            +transform(translate(-50%,-50%))
+            padding: 45px 30px
+
+            h2
+                @extend %heading
+                font-size: 3rem
+                margin: 0 0 15px
+            
+            a
+                margin-top: 40px
+
+            &::before, &::after, .corner::before, .corner::after
+                @extend %corner-edges
+                border-color: $white
+                width: 60px
+                height: 60px
+                
+            
+            &::before, .corner::before
+                left: 0
+
+            &::after, .corner::after
+                right: 0
+
+            &::before, &::after
+                top: 0
+
+            .corner::before,.corner::after
+                bottom: 0
+            
+            &::before
+                border-width: 2px 0 0 2px
+            
+            &::after
+                border-width: 2px 2px 0 0
+            
+            .corner::before
+                border-width: 0 0 2px 2px
+            
+            .corner::after
+                border-width: 0 2px 2px 0
+
+.button
+    padding: 10px 25px
+    background-color: $sky-blue
+    font-size: 1.2rem
+    font-weight: 600
+    color: $dark-grey
+    display: inline-block
+    border: none
+    +transition(all 0.3s ease-in-out)
+
+    &:hover
+        background: $yellow
+        color: $white
+
+.section
+    padding-top: 110px
+    padding-bottom: 110px
+
+.section-head
+    display: inline-block
+    max-width: 95%
+    position: relative
+    margin-bottom: 40px
+
+    &::before, &::after
+        @extend %corner-edges
+        border-color: $yellow
+        width: 40px
+        height: 40px
+    
+    &::before
+        border-width: 2px 0 0 2px
+        left: -50px
+        top: -15px
+    
+    &::after
+        border-width: 0 2px 2px 0
+        right: -50px
+        bottom: -15px
+    &.plain
+        &::before, &::after
+            display: none
+
+    h2 
+        @extend %heading
+
+.what-we-are
+    h2 
+        color: $dark-grey
+        font-size: 2.5rem
+    
+    p
+        em
+            color: $light-grey
+
+.card
+    position: relative
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: 50% 0
+    +box-shadow(0 4px 16px 0 rgba(51, 51, 51, 0.1))
+    padding: 45px 35px
+
+    &::after
+        @extend %corner-edges
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        z-index: 1
+        background: transparentize($white, 0.1)
+        border-width: 0
+        +transition(all 0.5s ease)
+
+    &:hover::after
+        opacity: 1
+        background: $yellow
+    
+    &:hover
+        .button
+            background: $yellow
+            color: $white
+
+    .card-body
+        position: relative
+        z-index: 2
+
+    .icon
+        font-size: 5rem
+    
+    .card-name
+        @extend %heading
+        font-size: 1.25rem
+        margin: 25px 0 18px
+    hr
+        width: 40px
+        height: 2px
+        background: $medium-grey
+        margin: 25px auto 20px
+        display: block
+        border: none
+
+    .button
+        margin-top: 30px
+
+.services
+    h2
+        color: $white
+    
+    p
+        color: $medium-light-grey
+        margin-top: 40px
+    
+    .service-box
+        padding: 25px 30px
+        margin-top: 30px
+        background: transparentize($white, 0.3)
+        min-height: 175px
+        color: $medium-grey
+        cursor: default
+        position: relative
+
+        .icon
+            font-size: 3rem
+        
+        .service-name
+            text-transform: uppercase
+            font-weight: 600
+            margin-top: 15px
+        
+        &:hover
+            background: $white
+
+        &::before, &::after
+            @extend %corner-edges
+            border-color: $medium-grey
+            width: 80px
+            height: 80px
+            +transition(all 0.3s ease-in-out)
+            opacity: 0;
+
+        &::before
+            border-width: 2px 0 0 2px 
+            left: 10px
+            top: 10px
+
+        &::after
+            border-width: 0 2px 2px 0
+            right: 10px
+            bottom: 10px
+
+        &:hover::before, &:hover::after
+            width: 30px
+            height: 30px
+            opacity: 1
+
+.why-choose
+    h4
+        font-size: 1.1rem
+        font-weight: 600
+    
+    p
+        color: $light-grey
+    
+    .icon
+        font-size: 6rem
+        padding : 10px
+        background: transparentize($light-grey, 0.9)
+        +transition(background 0.3s ease-in-out)
+    
+    .media
+        cursor: default
+        
+        &:hover
+            .icon
+                background: $yellow
+                color: $white
+    
+    .media+.media
+        margin-top: 20px
+
+.testimonials
+    position: relative
+
+    &::after
+        content: ''
+        background: transparentize($dark-grey, 0.3)
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        z-index: 1
+
+    .container
+        position: relative
+        z-index: 2
+    
+    h2
+        color: $white
+    
+    .testimonial-box
+        background: $white
+        border-bottom: 3px solid $yellow
+        padding: 30px
+        margin-top: 40px
+
+        img
+            margin: -60px auto 25px
+        
+        p
+            font-style: italic
+            color: $light-grey
+            min-height: 150px
+        
+        h5
+            font-weight: 600
+footer
+    background: $black url('../images/pattern.png') left top -200px
+    padding-top: 100px
+    color: $light-grey
+    background-attachment: fixed;
+
+    .social-links
+        a
+            margin-right: 20px
+    h4
+        text-transform: uppercase
+        font-weight: 600
+        color: $sky-blue
+    
+    .icon
+        color: $sky-blue
+    a
+        color: $light-grey
+        &:hover
+            color: $yellow
+    .copyright
+        font-size: 0.8rem
+        padding: 20px 0
+        margin-top: 40px
+        border-top: 1px solid transparentize($light-grey, 0.8)
+    
+    .scroll-top
+        font-size: 2rem
+        color: $yellow
+        position: fixed
+        right: 10px
+        bottom: 10px
+        z-index: 9
+        visibility: hidden
+        opacity: 0
+        +transition(all 0.3s ease)
+        
+        &.show
+            visibility: visible
+            opacity: 1
+.breadcrumbs
+    background: url('../images/breadcrumbs.jpg') center center no-repeat
+    background-attachment: fixed
+    padding: 70px 0 60px
+    position: relative
+
+    &::before
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background: transparentize($medium-grey, 0.1)
+    
+    .section-head
+        margin: 0
+            
+        h2
+            color: $white
+        
+    .breadcrumb
+        background: transparent
+
+        a
+            color: $white
+    
+    .breadcrumb>.active, .breadcrumb>li+li:before
+        color: $yellow
+
+
+    
+    
