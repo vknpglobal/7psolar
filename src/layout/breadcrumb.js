@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 class Breadcrumb extends React.Component {
@@ -16,7 +17,7 @@ class Breadcrumb extends React.Component {
                         </Col>
                         <Col md={6}>
                             <ol className="breadcrumb text-right">
-                                <li><a href="#">Home</a></li>
+                                <li><Link to="/">Home</Link></li>
                                 <li className="active">{this.props.name}</li>
                             </ol>
                         </Col>

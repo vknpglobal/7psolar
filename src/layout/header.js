@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Nav, Navbar, NavItem , NavDropdown , MenuItem,  } from 'react-bootstrap';
+import { Grid, Row, Col, Navbar  } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {Link} from 'react-router-dom';
 const align = {
@@ -59,7 +59,7 @@ class Header extends React.Component {
                     <Grid style={{ paddingTop: 40, paddingBottom: 40 }}>
                         <Row>
                             <Col sm={4}>
-                                <a href="www.7psolar.com"><img src={require('../assets/images/solar-logo.svg')} alt="7PSOLAR Logo" /></a>
+                                <Link to="/"><img src={require('../assets/images/solar-logo.svg')} alt="7PSOLAR Logo" /></Link>
                             </Col>
                             <Col sm={8} className="text-right">
                                 <Row>
@@ -82,23 +82,25 @@ class Header extends React.Component {
                             <Navbar.Toggle />
                         </Navbar.Header>
                         <Navbar.Collapse>
-                            <Nav>
-                                <NavItem eventKey={1} href="#">Home</NavItem>
-                                <NavItem eventKey={2}><Link to="/about">About Us</Link></NavItem>
-                                
-                                <NavItem eventKey={3} href="#">Knowledge Center</NavItem>
-                                <NavDropdown eventKey={4} title="Products" id="basic-nav-dropdown">
-                                    <MenuItem eventKey={4.1}>Solar PV Modules </MenuItem>
-                                    <MenuItem eventKey={4.2}>Solar Street light</MenuItem>
-                                    <MenuItem eventKey={4.3}>Solar LED Light</MenuItem>
-                                    <MenuItem eventKey={4.4}>Solar Water heater</MenuItem>
-                                    <MenuItem eventKey={4.5}>Solar Battery</MenuItem>
-                                    <MenuItem eventKey={4.6}>Solar Structure</MenuItem>
-                                </NavDropdown>
-                                <NavItem eventKey={5} href="#">Projects</NavItem>
-                                <NavItem eventKey={6} href="#">Solution &amp; Services</NavItem>
-                                <NavItem eventKey={7} href="#">Contact Us</NavItem>
-                            </Nav>
+                            <ul className="nav navbar-nav">
+                                <li><Link to="/">Home</Link></li>
+                                <li><Link to="/About">About US</Link></li>
+                                <li><Link to="/">Knowledge Center</Link></li>
+                                <li className="dropdown">
+                                    <Link to="/" id="basic-nav-dropdown" role="button" className="dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">Products <span className="caret"></span> </Link>
+                                    <ul className="dropdown-menu" area-labeld-by="basic-nav-dropdown">
+                                        <li><Link to="/">Solar PV Modules </Link></li>
+                                        <li><Link to="/">Solar Street light</Link></li>
+                                        <li><Link to="/">Solar LED Light</Link></li>
+                                        <li><Link to="/">Solar Water heater</Link></li>
+                                        <li><Link to="/">Solar Battery</Link></li>
+                                        <li><Link to="/">Solar Structure</Link></li>
+                                    </ul>
+                                </li>
+                                <li><Link to="/">Projects</Link></li>
+                                <li><Link to="/About">Solution &amp; Services</Link></li>
+                                <li><Link to="/">Contact Us</Link></li>
+                            </ul>
                         </Navbar.Collapse>
                     </Navbar>
                 </section>
